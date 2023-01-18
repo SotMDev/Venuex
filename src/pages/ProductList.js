@@ -1,5 +1,7 @@
 import React from 'react';
 import {useQuery} from 'react-query';
+import {Button, Card, CardActions, CardContent, CardMedia, Grid, Typography} from "@mui/material";
+import ProductDisplay from "../components/ProductDisplay";
 
 const ProductList = () => {
 
@@ -7,28 +9,42 @@ const ProductList = () => {
 	const {
 		data,
 		isLoading
-	} = useQuery(["products"], () => fetch(productsEndPoint).then(res => res.json()),{cacheTime: 5000});
+	} = useQuery(["products"], () => fetch(productsEndPoint).then(res => res.json()), {cacheTime: 5000});
 
 	return (
 		<>
-			<div className="product-filtering">
-				Filtering
-			</div>
+			<ProductDisplay />
 			<div className={"product-container"}>
 				{
 					isLoading ? <h1>Loading</h1>
 						:
-						<div>
+						<Grid container spacing={2}>
 							{data.map((product, index) => (
-								<div key={index}>
-									<div>{product.id}</div>
-									<div>{product.title}</div>
-									<img width={100} height={100} src={product.image} alt={product.title}></img>
-									<div>{product.price}</div>
-									<div>{product.rating?.rate}</div>
-								</div>
+								<Grid key={index} item xs={4}>
+									<Card style={{height: "100%"}}>
+										<CardMedia
+											sx={{height: 160}}
+											image={product.image}
+											title={product.title}
+										/>
+										<CardContent>
+											<Typography style={{ height: "100px", overflow: "hidden"}} gutterBottom variant="h6" component="div">
+												{product.title}
+											</Typography>
+											<Typography variant="body2">
+												{product.price} €
+											</Typography>
+											<Typography variant="body2">
+												Rating {product.rating?.rate}
+											</Typography>
+										</CardContent>
+										<CardActions style={{ justifyContent: "center" }}>
+											<Button size="large">Add to Cart</Button>
+										</CardActions>
+									</Card>
+								</Grid>
 							))}
-						</div>
+						</Grid>
 				}
 			</div>
 			<div className="product-per-page">
