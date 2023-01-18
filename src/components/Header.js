@@ -1,16 +1,34 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {Box, Grid, TextField} from "@mui/material";
-import logo from '../assets/img/logo.png'
-import Cart from "./Cart";
+import {useRecoilState} from "recoil";
+import {Alert, Box, Grid, Snackbar, Stack, TextField} from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
+import {toastState} from "../state/atoms";
+import Cart from "./Cart";
+import logo from '../assets/img/logo.png'
 
 const Header = () => {
 
+	const [toast, setToast] = useRecoilState(toastState);
+
+	const handleClose = (event, reason) => {
+		if (reason === 'clickaway') {
+			return;
+		}
+		setToast({status: false, type: 'success'});
+	};
+
 	return (
 		<header id={"header"}>
+			<Stack spacing={2} sx={{width: '100%'}}>
+				<Snackbar open={toast.status} autoHideDuration={1000} onClose={handleClose}>
+					<Alert onClose={handleClose} severity={toast.type} sx={{width: '100%'}}>
+						{toast.message}
+					</Alert>
+				</Snackbar>
+			</Stack>
 			<Box sx={{m: 2}}>
-				<Grid className={"align-items-center"} container spacing={2} columns={12}>
+				<Grid className={"align-items-center"} container columns={12}>
 					<Grid item xs={12} md={4}>
 						<div className="logo">
 							<NavLink to="/">

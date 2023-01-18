@@ -1,49 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
 body,
 * {
 	font-family: 'Montserrat', sans-serif!important;
 }
 
 #header {
-	padding: 0 36px;
+	padding: 0 20px;
 	border-bottom: 1px solid #cccccc;
 	margin-bottom: 20px;
-}
-
-.cart {
-	margin-bottom: 18px;
-	display: flex;
-	justify-content: flex-end;
-	p {
-		margin: 0 0 0 20px;
+	.logo {
+		@media(max-width: 900px) {
+			text-align: center;
+		}
+	}
+	.navigation {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		a {
+			display: inline-block;
+			padding: 10px;
+			font-size: 20px;
+			color: #000000;
+			text-decoration: none;
+		}
+	}
+	.cart {
+		margin-bottom: 20px;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+		p {
+			margin: 0 0 0 20px;
+		}
+		@media(max-width: 900px) {
+			justify-content: center;
+		}
+	}
+	.search {
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		.search-icon {
+			margin-left: 10px;
+		}
+		input {
+			padding-right: 20px;
+		}
+		@media(max-width: 900px) {
+			justify-content: center;
+		}
 	}
 }
 
-.search {
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	position: relative;
-	.search-icon {
-		position: absolute;
-		right: 20px;
-	}
-	input {
-		padding-right: 60px;
-	}
-}
-
-.navigation {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	a {
-		display: inline-block;
-		padding: 10px;
-		font-size: 20px;
-		color: #000000;
-		text-decoration: none;
-	}
-}
 
 .align-items-center {
 	align-items: center;
@@ -53,6 +63,12 @@ body,
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 20px;
+	@media(max-width: 590px) {
+		flex-direction: column;
+	}
+	h4 {
+		margin-bottom: 0;
+	}
 	.display-action {
 		display: flex;
 		justify-content: flex-end;
@@ -68,9 +84,34 @@ body,
 				&:hover {
 					background: #eeeeee;
 				}
+				&.active {
+					background: #cccccc;
+				}
 			}
 		}
 	}
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+.product-container {
+	margin-bottom: 20px;
+}
+
+.product-per-page {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	flex-wrap: wrap;
+	margin-bottom: 20px;
+	span {
+		display: inline-block;
+		margin-right: 20px;
+	}
+}
+
+.showcase {
+	text-decoration: none;
+}
+
+.add-to-cart-button {
+	background: #cccccc;
+}
