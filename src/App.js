@@ -10,7 +10,13 @@ import Home from "./pages/Home";
 import './assets/scss/helpers.scss';
 
 function App() {
-	const queryClient = new QueryClient();
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				refetchOnWindowFocus: false
+			}
+		}
+	});
 
 	return (
 		<QueryClientProvider client={queryClient}>

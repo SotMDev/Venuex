@@ -3,12 +3,11 @@ import {useQuery} from 'react-query';
 
 const ProductList = () => {
 
-	const productsEndPoint = "https://fakestoreapi.com/products";
+	const productsEndPoint = "https://fakestoreapi.com/products?limit=8";
 	const {
 		data,
-		isLoading,
-		isFetching
-	} = useQuery(["products"], () => fetch(productsEndPoint).then(res => res.json()));
+		isLoading
+	} = useQuery(["products"], () => fetch(productsEndPoint).then(res => res.json()),{cacheTime: 5000});
 
 	return (
 		<>
@@ -17,14 +16,14 @@ const ProductList = () => {
 			</div>
 			<div className={"product-container"}>
 				{
-					isLoading || isFetching ? <h1>Loading</h1>
+					isLoading ? <h1>Loading</h1>
 						:
 						<div>
 							{data.map((product, index) => (
 								<div key={index}>
 									<div>{product.id}</div>
 									<div>{product.title}</div>
-									<img width={100} height={100} src={product.image}></img>
+									<img width={100} height={100} src={product.image} alt={product.title}></img>
 									<div>{product.price}</div>
 									<div>{product.rating?.rate}</div>
 								</div>
