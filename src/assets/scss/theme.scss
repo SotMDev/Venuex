@@ -54,11 +54,6 @@ body,
 	}
 }
 
-
-.align-items-center {
-	align-items: center;
-}
-
 .product-display {
 	display: flex;
 	justify-content: space-between;
@@ -93,7 +88,7 @@ body,
 }
 
 .product-container {
-	margin-bottom: 20px;
+	margin-bottom: 40px;
 }
 
 .product-per-page {
@@ -110,8 +105,4 @@ body,
 
 .showcase {
 	text-decoration: none;
-}
-
-.add-to-cart-button {
-	background: #cccccc;
 }

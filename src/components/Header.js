@@ -28,17 +28,16 @@ const Header = () => {
 				</Snackbar>
 			</Stack>
 			<Box sx={{m: 2}}>
-				<Grid className={"align-items-center"} container columns={12}>
+				<Grid style={{alignItems: 'center'}} container columns={12}>
 					<Grid item xs={12} md={4}>
 						<div className="logo">
-							<NavLink to="/">
+							<NavLink to="/products">
 								<img src={logo} alt={"logo"}/>
 							</NavLink>
 						</div>
 					</Grid>
 					<Grid item xs={12} md={4}>
 						<nav className={"navigation"}>
-							<NavLink to="/">Home</NavLink>
 							<NavLink to="/products">Products</NavLink>
 						</nav>
 					</Grid>

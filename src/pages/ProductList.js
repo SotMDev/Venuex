@@ -80,7 +80,8 @@ const ProductList = () => {
 												</Typography>
 											</CardContent>
 											<CardActions style={{justifyContent: "center"}}>
-												<Button variant="contained" onClick={(event) => addToCart(event, product)}>
+												<Button variant="contained"
+														onClick={(event) => addToCart(event, product)}>
 													Add to Cart
 												</Button>
 											</CardActions>
