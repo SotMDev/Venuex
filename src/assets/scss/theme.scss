@@ -106,3 +106,10 @@ body,
 .showcase {
 	text-decoration: none;
 }
+
+.star-svg {
+	path:last-child {
+		stroke-width: 1px;
+		stroke: #000000;
+	}
+}

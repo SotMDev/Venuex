@@ -14,6 +14,7 @@ import {
 	Typography
 } from "@mui/material";
 import {cartState, productDisplayState, productPerPageState, toastState} from "../state/atoms";
+import { Rating } from 'react-simple-star-rating'
 import ProductDisplay from "../components/ProductDisplay";
 import ProductPerPage from "../components/ProductPerPage";
 
@@ -72,12 +73,18 @@ const ProductList = () => {
 															variant="h6" component="div">
 													{product.title}
 												</Typography>
-												<Typography variant="body2">
+												<Typography gutterBottom variant="body2">
 													{product.price} €
 												</Typography>
-												<Typography variant="body2">
-													Rating {product.rating?.rate}
-												</Typography>
+												<Rating
+													initialValue={product.rating?.rate}
+													readonly={true}
+													allowHalfIcon={true}
+													allowFraction
+													size={20}
+													emptyColor={'#FFFFFF'}
+													fillColor={'#FFC90B'}
+												/>
 											</CardContent>
 											<CardActions style={{justifyContent: "center"}}>
 												<Button variant="contained"
