@@ -32,6 +32,7 @@ const ProductList = () => {
 		isFetching,
 		refetch
 	} = useQuery(["products"], () => fetch(productsEndPoint).then(res => res.json()).catch(err => {
+			console.log(err);
 			setToast({status: true, type: 'error', message: 'Something went wrong!'});
 		})
 		,
